@@ -30,7 +30,7 @@ Options:
 - `-color`        Font color, e.g. `#FFFFFF`, `red`, default `#FFFFFF`
 - `-pos`          Watermark position: `left-top`, `center`, `right-bottom` (default)
 
-Output images are saved to a `_watermark` subfolder under the original directory, with the same filename and format.
+Output images are saved under the original folder, into a child folder named `<originalDirName>_watermark` (e.g., `photos/photos_watermark`), with the same filename and format.
 
 Notes:
 - If an image has no EXIF original date, it will be skipped.

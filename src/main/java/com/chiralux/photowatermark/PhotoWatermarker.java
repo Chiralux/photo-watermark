@@ -97,7 +97,15 @@ public class PhotoWatermarker {
 
     private static Path resolveOutputPath(Path input) {
         Path dir = input.getParent();
-        return dir.resolve("_watermark").resolve(input.getFileName());
+        if (dir == null) {
+            // No parent? create a local folder using file base name
+            String base = input.getFileName() != null ? input.getFileName().toString() : "output";
+            Path outDir = input.resolveSibling(base + "_watermark");
+            return outDir.resolve(input.getFileName());
+        }
+        String baseName = dir.getFileName() != null ? dir.getFileName().toString() : "output";
+        Path outDir = dir.resolve(baseName + "_watermark");
+        return outDir.resolve(input.getFileName());
     }
 
     private static String extractShootingDate(File imageFile) {
